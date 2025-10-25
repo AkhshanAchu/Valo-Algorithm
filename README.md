@@ -144,7 +144,7 @@ Below are convergence plots demonstrating the algorithm's performance on standar
 | Function | Visualization | Convergence Plot |
 |----------|---------------|------------------|
 | **Rastrigin** (highly multimodal) | <img width="561" height="422" alt="image" src="https://github.com/user-attachments/assets/e4e500ad-0c01-44c4-8b46-f2fd7a97bdb4" /> |![listen_simulation_rastrigin](https://github.com/user-attachments/assets/486faab7-c8cb-4457-a870-52397582a90b)|
-| **Griewank** (unimodal convex) |<img width="636" height="410" alt="image" src="https://github.com/user-attachments/assets/fcc5cd99-822d-408a-ae92-3d235e399df4" />| <img width="656" height="620" alt="image" src="https://github.com/user-attachments/assets/d527918b-58ab-4084-b83a-eed26a7ba785" /> |
+| **Griewank** (unimodal convex) |<img width="636" height="410" alt="image" src="https://github.com/user-attachments/assets/fcc5cd99-822d-408a-ae92-3d235e399df4" />| ![listen_simulation_griewank](https://github.com/user-attachments/assets/cd3d1feb-17c1-4d4b-b4a2-3df7886869a0)|
 | **RosenBrock** (multimodal with global structure) | <img width="370" height="280" alt="image" src="https://github.com/user-attachments/assets/7c92a314-acab-445b-a72f-694b73721b64" />| ![listen_simulation_rosenbrock](https://github.com/user-attachments/assets/9f4099ff-cfe0-4643-abf7-851518d142fc)|
 
 *Drag and drop your images into the empty parentheses above*
