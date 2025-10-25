@@ -186,3 +186,4 @@ optimizer = ValoEnhanced(
     mode="aggressive"  # More exploration, less convergence
 )
 ```
+Made with ❤️ from NiceGuy
