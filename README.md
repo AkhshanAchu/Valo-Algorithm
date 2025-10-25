@@ -49,14 +49,6 @@ The algorithm supports three operational modes:
 - **Balanced**: Equal emphasis on exploration and exploitation (`mode="balanced"`)
 - **Aggressive**: Intensive exploration with delayed convergence (`mode="aggressive"`)
 
-## Installation
-
-Ensure you have the required dependencies:
-
-```bash
-pip install numpy tqdm
-```
-
 ## Usage
 
 ### Basic Optimization
