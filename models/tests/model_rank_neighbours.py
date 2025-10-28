@@ -3,7 +3,7 @@ import math
 from tqdm import tqdm
 
 
-class ValoEnhanced:
+class ValoEnhancedKNN:
     def __init__(self, func, lb, ub, dim, n_agents=40, roles_frac=None, seed=None,
                  sigma1=0.8, sigma2=0.12, beta=1.5, eta=0.25, lmbda=2, top_k=None,
                  mode="balanced"):
@@ -115,14 +115,19 @@ class ValoEnhanced:
         for c in controllers_idx:
             active_idx = duelists_idx + initiator_idx
             if len(active_idx) > 0:
+                # Compute distances from controller c to all active agents
+                distances = np.linalg.norm(self.positions[active_idx] - self.positions[c], axis=1)
+                
+                # Compute k dynamically same as before
                 k_max = min(self.p["top_k"], len(active_idx))
-                k = max(5, int(k_max * (1 - progress) + 0.5)) 
-                chosen = self.rng.choice(active_idx, size=k, replace=False)
-                centroid = np.mean(self.positions[chosen], axis=0)
-
-                # if len(duelists_idx) > 0:
-                #     duel_centroid = np.mean(self.positions[duelists_idx], axis=0)
-                #     centroid = 0.6 * duel_centroid + 0.4 * centroid
+                k = max(5, int(k_max * (1 - progress) + 0.5))
+                
+                # Find k nearest neighbors (indices relative to active_idx)
+                nearest_indices = np.argsort(distances)[:k]
+                nearest_agents = [active_idx[i] for i in nearest_indices]
+                
+                # Compute centroid of nearest neighbors
+                centroid = np.mean(self.positions[nearest_agents], axis=0)
 
                 step = self.p["eta"] * (centroid - self.positions[c]) + 0.1 * self.rng.randn(self.dim)
                 self.positions[c] = self._clip(self.positions[c] + step)
@@ -130,6 +135,7 @@ class ValoEnhanced:
                 rand = self.positions[self.rng.randint(0, self.n_agents)]
                 step = self.p["eta"] * (rand - self.positions[c]) + 0.1 * self.rng.randn(self.dim)
                 self.positions[c] = self._clip(self.positions[c] + step)
+
 
 
         controllers_exist = len(controllers_idx) > 0
@@ -158,7 +164,7 @@ class ValoEnhanced:
         self.iter = 0
         self._evaluate()
 
-        desc = f"Controlled LISTEN ({self.mode.title()} Mode)"
+        desc = f"Enhanced with KNN ({self.mode.title()} Mode)"
         with tqdm(total=iterations, desc=desc, ncols=100) as pbar:
             for _ in range(iterations):
                 self._step()
@@ -184,7 +190,7 @@ dim = 100
 lb = -100 * np.ones(dim)
 ub = 100 * np.ones(dim)
 
-opt = ValoEnhanced(rastrigin, lb, ub, 100, n_agents=600, seed=42)
+opt = ValoEnhancedKNN(rastrigin, lb, ub, 100, n_agents=600, seed=42)
 
 hist_pos, hist_best, best_score = opt.run(iterations=200)
 print("\nBest score:", best_score)
