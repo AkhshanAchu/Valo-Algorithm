@@ -1,6 +1,5 @@
 # 👓 Valo-Algorithm
-Optimization Algorithm Inspired from Valorant
-a# ValoEnhanced Optimization Algorithm
+Optimization Algorithm Inspired from Valorant site entry. 
 
 A bio-inspired metaheuristic optimization algorithm implementing role-based agent collaboration with adaptive search strategies.
 
