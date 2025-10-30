@@ -1,4 +1,4 @@
-# Valo-Algorithm
+# 👓 Valo-Algorithm
 Optimization Algorithm Inspired from Valorant
 a# ValoEnhanced Optimization Algorithm
 
