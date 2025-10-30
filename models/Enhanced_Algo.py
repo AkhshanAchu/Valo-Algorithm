@@ -175,17 +175,19 @@ class ValoEnhanced:
         }
     
 
-def rastrigin(x):
-    x = np.asarray(x)
-    n = len(x)
-    return 10*n + np.sum(x**2 - 10*np.cos(2*np.pi*x))
+# def rastrigin(x):
+#     x = np.asarray(x)
+#     n = len(x)
+#     return 10*n + np.sum(x**2 - 10*np.cos(2*np.pi*x))
 
-dim = 100
-lb = -100 * np.ones(dim)
-ub = 100 * np.ones(dim)
+# dim = 100
+# lb = -100 * np.ones(dim)
+# ub = 100 * np.ones(dim)
 
-opt = ValoEnhanced(rastrigin, lb, ub, 100, n_agents=600, seed=42)
+# opt = ValoEnhanced(rastrigin, lb, ub, 100, n_agents=600, seed=42)
 
-hist_pos, hist_best, best_score = opt.run(iterations=200)
-print("\nBest score:", best_score)
-print("Best position (first 6 dims):", opt.get_best_solution()["position"][:6])
+# hist_pos, hist_best, best_score = opt.run(iterations=200)
+# print("\nBest score:", best_score)
+# print("Best position (first 6 dims):", opt.get_best_solution()["position"][:6])
+
+
